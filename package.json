@@ -1,0 +1,14 @@
+{
+  "name": "scrapping-with-selenium",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "node execScripts.js"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "selenium-webdriver": "^4.19.0"
+  }
+}
