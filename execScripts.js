@@ -2,9 +2,9 @@ const { exec } = require("child_process");
 
 const scripts = [
   "index.js",
-  // "index2.js",
+  "index2.js",
   // "index3.js",
-  // "index5.js",
+  // "index4.js",
   // "index6.js",
   // "index7.js",
   // "index8.js",

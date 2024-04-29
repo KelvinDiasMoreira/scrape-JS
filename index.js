@@ -5,18 +5,15 @@ const { randomUUID } = require("node:crypto");
 
 async function getAllInfo() {
   let driver = await new Builder().forBrowser(Browser.CHROME).build();
-  driver.add;
-  // const ALPHABET = ["a", "b"];
-  // const ALPHABET = ["a"];
 
-  const objectScrapped = [];
+  // let objectScrapped = [];
 
   for (let i = 1; i < 22; i++) {
-    const URL = `secret`;
-    objectScrapped.push(await getInfos(URL));
+    const URL = ``;
+    // objectScrapped.push(await getInfos(URL));
     writeFile(
       `./data${i}.json`,
-      JSON.stringify(objectScrapped, null, 4),
+      JSON.stringify(await getInfos(URL), null, 4),
       "utf8",
       (err) => {
         if (err) {
@@ -24,6 +21,7 @@ async function getAllInfo() {
         }
       }
     );
+    // objectScrapped = [];
   }
 
   async function getInfos(url) {
@@ -80,13 +78,13 @@ async function getAllInfo() {
           const episodes = await driver.findElements(
             By.css("#seasons .se-c .se-a ul.episodios li .episodiotitle a")
           );
-          console.log(object[k]);
           object[k].episodes = [];
           for (let l = 0; l < episodes.length; l++) {
+            const episode = await episodes[l].getText();
             object[k].episodes = [
               ...object[k].episodes,
               {
-                episode: l + 1,
+                episode: Number(episode.split(" ")[1]),
                 url: await episodes[l].getAttribute("href"),
               },
             ];
@@ -97,7 +95,6 @@ async function getAllInfo() {
             object[k].episodes[n].url = await driver
               .findElement(By.className("metaframe rptss"))
               .getAttribute("src");
-            console.log(object[k].episodes[n]);
           }
         } catch (err) {
           continue;

@@ -4,11 +4,12 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "node execScripts.js"
+    "s": "node execScripts.js"
   },
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "axios": "^1.6.8",
     "selenium-webdriver": "^4.19.0"
   }
 }
